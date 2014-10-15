@@ -11,27 +11,24 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
 {
    Double* db;  //use this variable to place and retrieve values on the queue
    
-   QueueLinked<Double>* q1 =
-   QueueLinked<Double>* q2 =
+   QueueLinked<Double>* q1 = new QueueLinked<Double>;
+   QueueLinked<Double>* q2 = new QueueLinked<Double>;
 
 
    int counter = 0;
    int n = 1;  //current number of intervals
-   while (                     )
+   while (counter <= level)
    {
       //DO THIS
       //obtain the required number of trapezoid evaluations depending on the number of levels requested
       //put all of the level 0 results on the q1
+	  double result = RecursiveIntegration::romberg(f, a, b, n);
+	  db = new Double(result);
+	  if(counter <= 0)
+		q1->enqueue(db);
+	 
 
-
-
-
-
-
-
-
-
-
+	  
       n = 2*n;  //double the number of intervals
       counter++;
    }
@@ -45,18 +42,30 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
    //the total number of executions of the loop is ??
 
    //DO THIS
-   int iterations =                //can be precomputed
+   int iterations;//can be precomputed
+   for(int i = 0; i <= level; i++)//finds the factorial of levels to use as iterations
+   {
+		iterations = (iterations*i);
+   }  
+   
    while (iterations > 0)
    {
       //DO THIS
       //use the algorithm described in the lab to improve the accuracy of your level 0 results
+	  
+	  Double* num1 = q1->dequeue();
+	  Double* num2 = q1->peek();
+	  factor = pow(4, power);
+	  
+	  double i_i = num1->getItem();
+	  double i_m = num2->getItem();
 
-
-
-
-
-
-
+	  double formula = ((factor*i_m)-i_i)/(factor - 1);
+	  delete num1;
+	  if()
+	  {
+	    q2
+	  }
 
 
 
