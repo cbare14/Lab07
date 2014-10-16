@@ -114,7 +114,7 @@ T* QueueLinked<T>::dequeue()
 
    if(sze == 1)
    {
-      item = back;
+      item = back -> getItem();
       back = NULL;
       sze--;
    }
