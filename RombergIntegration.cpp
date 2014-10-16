@@ -15,8 +15,13 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
 {
    Double* db;  //use this variable to place and retrieve values on the queue
    
+<<<<<<< HEAD
    QueueLinked<Double>* q1 = new QueueLinked<Double>();
    QueueLinked<Double>* q2 = new QueueLinked<Double>();
+=======
+   QueueLinked<Double>* q1 = new QueueLinked<Double>;
+   QueueLinked<Double>* q2 = new QueueLinked<Double>;
+>>>>>>> 7c92ab55432bff291fcbf0738aab41b0459132c4
 
 
    int counter = 0;
@@ -26,11 +31,21 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
       //DO THIS
       //obtain the required number of trapezoid evaluations depending on the number of levels requested
       //put all of the level 0 results on the q1
+<<<<<<< HEAD
   
       double temp = RecursiveIntegration::romberg(f,a,b,n);
       db = new Double(temp);
       q1 -> enqueue(db);
       
+=======
+	  double result = RecursiveIntegration::romberg(f, a, b, n);
+	  db = new Double(result);
+	  if(counter <= 0)
+		q1->enqueue(db);
+	 
+
+	  
+>>>>>>> 7c92ab55432bff291fcbf0738aab41b0459132c4
       n = 2*n;  //double the number of intervals
       counter++;
    }
@@ -44,6 +59,7 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
    //the total number of executions of the loop is ??
 
    //DO THIS
+<<<<<<< HEAD
    int iterations = 0;               //can be precomputed
 
    int i = level;
@@ -53,10 +69,19 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
       i--;
    }
 
+=======
+   int iterations;//can be precomputed
+   for(int i = 0; i <= level; i++)//finds the factorial of levels to use as iterations
+   {
+		iterations = (iterations*i);
+   }  
+   
+>>>>>>> 7c92ab55432bff291fcbf0738aab41b0459132c4
    while (iterations > 0)
    {
       //DO THIS
       //use the algorithm described in the lab to improve the accuracy of your level 0 results
+<<<<<<< HEAD
  
       Double* D_i_m = q1 -> dequeue();
       Double* D_i_l = q1 -> peek();
@@ -94,6 +119,33 @@ double RombergIntegration::accurateRomberg(MultiVarFunction* f, double a, double
 
          power++;
       }
+=======
+	  
+	  Double* num1 = q1->dequeue();
+	  Double* num2 = q1->peek();
+	  factor = pow(4, power);
+	  
+	  double i_i = num1->getItem();
+	  double i_m = num2->getItem();
+
+	  double formula = ((factor*i_m)-i_i)/(factor - 1);
+	  delete num1;
+	  if()
+	  {
+	    q2
+	  }
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 7c92ab55432bff291fcbf0738aab41b0459132c4
 
       iterations--;
    }
